@@ -17,4 +17,13 @@ emails and hashing to match Gravatar's API requirements.
 
 ## Gmail support
 
+Gmail allows users to create email aliases by inserting `+` and `.` characters
+in the local part of their email address.
+
+For example, emails sent to `foo.bar+baz@gmail.com` and `foobar@gmail.com` end
+up at the same place.
+
+Unfortunately, this breaks our ability to lookup Gravatar profiles as the extra
+characters generate new hashes that don't line up with the base email.
+
 `hoplon-gravatar.api/should-normalize-email?`

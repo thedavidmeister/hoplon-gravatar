@@ -18,6 +18,7 @@
    [crisptrutski/boot-cljs-test "0.3.5-SNAPSHOT"]
    [adzerk/bootlaces "0.1.13"]
    [com.taoensso/timbre "4.10.0"]
+   [adzerk/boot-test "1.2.0"]
 
    ; everything else...
    [thedavidmeister/cljc-md5 "0.0.2"]
@@ -36,7 +37,8 @@
  '[tailrecursion.boot-jetty :refer [serve]]
  '[thedavidmeister.boot-github-pages :refer [github-pages]]
  '[crisptrutski.boot-cljs-test :refer [test-cljs]]
- '[adzerk.bootlaces :refer :all])
+ '[adzerk.bootlaces :refer :all]
+ '[adzerk.boot-test :refer :all])
 
 (bootlaces! version)
 
