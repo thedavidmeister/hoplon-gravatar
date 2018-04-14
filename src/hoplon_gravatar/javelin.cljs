@@ -1,6 +1,5 @@
 (ns hoplon-gravatar.javelin
  (:require
-  goog.net.Jsonp
   hoplon-gravatar.api
   hoplon-gravatar.gmail
   ajax.core
@@ -15,17 +14,18 @@
  [result-cell email]
  (let [url (str "https://www.gravatar.com/" (hoplon-gravatar.api/email->hash email) ".json")]
   ; google has no error handling! gross 404's in the console everywhere :(
-  (.send (goog.net.Jsonp. url)
-   ""
-   (fn [r]
-    (let [kebab-keys (partial medley.core/map-keys camel-snake-kebab.core/->kebab-case-keyword)]
-     (reset! result-cell
-      (-> r
-       js->clj
-       (get "entry")
-       first
-       kebab-keys
-       (update :name kebab-keys))))))))
+  (ajax.core/GET url
+   {:handler
+    (fn [r]
+     (prn r)
+     (let [kebab-keys (partial medley.core/map-keys camel-snake-kebab.core/->kebab-case-keyword)]
+      (reset! result-cell
+       (-> r
+        js->clj
+        (get "entry")
+        first
+        kebab-keys
+        (update :name kebab-keys)))))})))
 
 (defn profile-cell
  [email-cell]
