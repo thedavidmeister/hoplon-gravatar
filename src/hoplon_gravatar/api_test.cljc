@@ -12,12 +12,12 @@
             "FOO@example.com"]]
   (is (= "b48def645758b95537d4424c84d1a9ff" (hoplon-gravatar.api/email->hash e)))))
 
-(deftest ??email->url
- (is (= "https://www.gravatar.com/avatar/b48def645758b95537d4424c84d1a9ff" (str (hoplon-gravatar.api/email->url "foo@example.com"))))
+(deftest ??email->avatar-url
+ (is (= "https://www.gravatar.com/avatar/b48def645758b95537d4424c84d1a9ff" (str (hoplon-gravatar.api/email->avatar-url "foo@example.com"))))
  (is
   (=
    "https://www.gravatar.com/avatar/b48def645758b95537d4424c84d1a9ff?d=mm&f=y&r=pg&s=50"
-   (hoplon-gravatar.api/email->url "foo@example.com" :d :mm :f true :r :pg :s 50))))
+   (hoplon-gravatar.api/email->avatar-url "foo@example.com" :d :mm :f true :r :pg :s 50))))
 
 (deftest ??profile->name
  (let [p {:name {:formatted "fmt"
