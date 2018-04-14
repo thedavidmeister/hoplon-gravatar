@@ -1,3 +1,3 @@
-(ns gravatar.data)
+(ns hoplon-gravatar.data)
 
 (def default-image :identicon)
