@@ -10,12 +10,33 @@ There are multiple namespaces in `hoplon-gravatar` moving from low level config
 and API wrappers up to Hoplon elements for profile pictures and usernames that
 Just Works.
 
+### Spec
+
+The configuration parameters for the Gravatar avatar API are all specced out in
+`hoplon-gravatar.spec` as `:gravatar/config`.
+
 ### Low level API
 
 The `hoplon-gravatar.api` namespace contains low level fns for normalization of
 emails and hashing to match Gravatar's API requirements.
 
-### Gmail support
+`hoplon-gravatar.api/email->hash` generates an md5 hash of the passed email
+address as per the process in the Gravatar API documentation.
+
+https://en.gravatar.com/site/implement/hash/
+
+`hoplon-gravatar.api/email->avatar-url` generates a full gravatar avatar URL
+suitable for including directly in an `img` tag from an email address.
+
+`emaili->avatar-url` accepts optional additional parameters as per the API
+documentation at https://en.gravatar.com/site/implement/images/.
+
+`:s` or `:size`: An integer between `1` and `2048` as the image size in pixels.
+`:d` or `:default-image`: A keyword preset as `:gravatar/default-image` spec.
+`:f` or `:force-default`: Boolean flag to force the default image.
+`:r` or `:rating`: The image rating as `:gravatar/rating` spec.
+
+### Gmail alias support
 
 Gmail allows users to create email aliases by inserting `+` and `.` characters
 in the local part of their email address.
