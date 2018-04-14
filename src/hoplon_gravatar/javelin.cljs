@@ -1,8 +1,8 @@
 (ns hoplon-gravatar.javelin
  (:require
   goog.net.Jsonp
-  gravatar.api
-  wheel.email.spec
+  hoplon-gravatar.api
+  hoplon-gravatar.gmail
   ajax.core
   clojure.walk
   medley.core
@@ -13,7 +13,7 @@
 
 (defn -attempt-profile!
  [result-cell email]
- (let [url (str "https://www.gravatar.com/" (gravatar.api/email->hash email) ".json")]
+ (let [url (str "https://www.gravatar.com/" (hoplon-gravatar.api/email->hash email) ".json")]
   ; google has no error handling! gross 404's in the console everywhere :(
   (.send (goog.net.Jsonp. url)
    ""
@@ -29,12 +29,13 @@
 
 (defn profile-cell
  [email-cell]
- (j/with-let [result-cell (j/cell nil)]
-  (h/do-watch email-cell
-   (fn [_ n]
-    (reset! result-cell nil)
-    (when (spec/valid? :wheel.email/email n)
-     (-attempt-profile! result-cell n)
-     ; normalize aliases and other oddness
-     (when (gravatar.api/should-normalize-email? n)
-      (-attempt-profile! result-cell (gravatar.api/normalize-email n))))))))
+ (let [email (j/formula-of [email-cell] email-cell)]
+  (j/with-let [result-cell (j/cell nil)]
+   (h/do-watch email
+    (fn [_ n]
+     (reset! result-cell nil)
+     (when (string? n)
+      (-attempt-profile! result-cell n)
+      ; normalize aliases and other oddness
+      (when (hoplon-gravatar.gmail/maybe-alias? n)
+       (-attempt-profile! result-cell (hoplon-gravatar.gmail/normalize-email-alias n)))))))))

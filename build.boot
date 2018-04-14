@@ -22,7 +22,10 @@
 
    ; everything else...
    [thedavidmeister/cljc-md5 "0.0.2"]
-   [com.cemerick/url "0.1.1"]])
+   [com.cemerick/url "0.1.1"]
+   [medley "1.0.0"]
+   [thedavidmeister/hoplon-elem-lib "0.2.0"]
+   [cljs-ajax "0.7.3"]])
 
 (task-options!
  pom {:project project

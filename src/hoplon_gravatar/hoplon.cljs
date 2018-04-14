@@ -1,9 +1,9 @@
 (ns hoplon-gravatar.hoplon
  (:require
   auth.data
-  gravatar.data
-  gravatar.api
-  gravatar.javelin
+  hoplon-gravatar.data
+  hoplon-gravatar.api
+  hoplon-gravatar.javelin
   [hoplon.core :as h]
   [javelin.core :as j]))
 
