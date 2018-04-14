@@ -5,28 +5,6 @@
   cemerick.url
   [clojure.spec.alpha :as spec]))
 
-; https://webapps.stackexchange.com/questions/26053/gmail-address-with-within-the-recipient-name
-(defn should-normalize-email?
- [email]
- (let [[local & rest] (clojure.string/split email #"@")]
-  (or
-   (clojure.string/includes? local "+")
-   (clojure.string/includes? local "."))))
-
-(defn normalize-email
- [email]
- (let [[local & rest] (clojure.string/split email #"@")]
-  (clojure.string/join
-   "@"
-   (into
-    (-> local
-     ; drop everything after +'s
-     (clojure.string/replace #"\+.*" "")
-     ; drop all .'s
-     (clojure.string/replace "." "")
-     vector)
-    rest))))
-
 (defn email->hash
  [email]
  (-> email

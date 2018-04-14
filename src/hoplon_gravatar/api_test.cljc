@@ -5,18 +5,6 @@
 
 ; TESTS
 
-(deftest ??should-normalize-email?
- (doseq [[i o] [["foo@bar.com" false]
-                ["f.oo@bar.com" true]
-                ["f+oo@bar.com" true]]]
-  (is (= o (hoplon-gravatar.api/should-normalize-email? i)))))
-
-(deftest ??normalize-email
- (doseq [e ["foo+bar@x.x"
-            "f.o.o+b.a.r@x.x"
-            "foo@x.x"]]
-  (is (= "foo@x.x" (hoplon-gravatar.api/normalize-email e)))))
-
 (deftest ??email->hash
  (doseq [e ["foo@example.com"
             " foo@example.com"

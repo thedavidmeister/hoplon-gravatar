@@ -14,3 +14,5 @@ Just Works.
 
 The `hoplon-gravatar.api` namespace contains low level fns for normalization of
 emails and hashing to match Gravatar's API requirements.
+
+`hoplon-gravatar.api/should-normalize-email?`
