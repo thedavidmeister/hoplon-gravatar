@@ -1,4 +1,4 @@
-(ns gravatar.javelin
+(ns hoplon-gravatar.javelin
  (:require
   goog.net.Jsonp
   gravatar.api

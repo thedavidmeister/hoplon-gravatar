@@ -36,6 +36,30 @@ documentation at https://en.gravatar.com/site/implement/images/.
 `:f` or `:force-default`: Boolean flag to force the default image.
 `:r` or `:rating`: The image rating as `:gravatar/rating` spec.
 
+```clojure
+(hoplon-gravatar.api/email->url "foo@example.com" :d :mm :f true :r :pg :s 50)
+; "https://www.gravatar.com/avatar/b48def645758b95537d4424c84d1a9ff?d=mm&f=y&r=pg&s=50"
+```
+
+`hoplon-gravatar.api/profile->name` takes a Gravatar profile and optional email
+address, returns a best effort name/username for the profile/email combination.
+
+Favours (in order):
+
+0. The formatted name in the profile
+0. The display name in the profile
+0. The given name in the profile
+0. The preferred username in the profile
+0. The local component of the provided email address
+
+```clojure
+(hoplon-gravatar.api/profile->name
+  {:name {:formatted "foo"
+          :given-name "bar"}}) ; foo
+
+(hoplon-gravatar.api/profile->name {} "bar@example.com") ; bar
+```
+
 ### Gmail alias support
 
 Gmail allows users to create email aliases by inserting `+` and `.` characters

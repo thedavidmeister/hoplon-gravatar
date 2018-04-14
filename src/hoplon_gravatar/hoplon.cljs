@@ -1,4 +1,4 @@
-(ns gravatar.hoplon
+(ns hoplon-gravatar.hoplon
  (:require
   auth.data
   gravatar.data
