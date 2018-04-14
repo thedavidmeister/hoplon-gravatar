@@ -3,14 +3,14 @@
   hoplon-gravatar.gmail
   [clojure.test :refer [deftest is]]))
 
-(deftest ??should-normalize-email?
+(deftest ??maybe-alias?
  (doseq [[i o] [["foo@bar.com" false]
                 ["f.oo@bar.com" true]
                 ["f+oo@bar.com" true]]]
-  (is (= o (hoplon-gravatar.gmail-test/should-normalize-email? i)))))
+  (is (= o (hoplon-gravatar.gmail/maybe-alias? i)))))
 
-(deftest ??normalize-email
+(deftest ??normalize-email-alias
  (doseq [e ["foo+bar@x.x"
             "f.o.o+b.a.r@x.x"
             "foo@x.x"]]
-  (is (= "foo@x.x" (hoplon-gravatar.gmail-test/normalize-email e)))))
+  (is (= "foo@x.x" (hoplon-gravatar.gmail/normalize-email-alias e)))))
