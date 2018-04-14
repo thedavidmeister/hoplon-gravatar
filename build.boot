@@ -17,9 +17,10 @@
    [thedavidmeister/boot-github-pages "0.1.0-SNAPSHOT"]
    [crisptrutski/boot-cljs-test "0.3.5-SNAPSHOT"]
    [adzerk/bootlaces "0.1.13"]
-   [com.taoensso/timbre "4.10.0"]])
+   [com.taoensso/timbre "4.10.0"]
 
    ; everything else...
+   [thedavidmeister/cljc-md5 "0.0.2"]])
 
 (task-options!
  pom {:project project
