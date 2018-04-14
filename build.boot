@@ -1,6 +1,6 @@
 (def project 'thedavidmeister/hoplon-gravatar)
 (def version "0.0.1")
-(def description "Gravatar for Hoplon")
+(def description "\"Batteries included\" Gravatar integration for Hoplon.")
 (def github-url "https://github.com/thedavidmeister/hoplon-gravatar")
 
 (set-env!
@@ -20,7 +20,8 @@
    [com.taoensso/timbre "4.10.0"]
 
    ; everything else...
-   [thedavidmeister/cljc-md5 "0.0.2"]])
+   [thedavidmeister/cljc-md5 "0.0.2"]
+   [com.cemerick/url "0.1.1"]])
 
 (task-options!
  pom {:project project

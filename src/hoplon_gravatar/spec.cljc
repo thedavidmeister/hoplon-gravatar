@@ -1,4 +1,4 @@
-(ns gravatar.spec
+(ns hoplon-gravatar.spec
  (:require
   [clojure.spec.alpha :as spec]))
 
